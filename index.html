@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <title>Pizzaria Modelo</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <!-- Header -->
+    <header class="bg-gray-800 text-white text-center py-8 relative bg-cover bg-center" style="background-image: url('./assets/banner-01.jpg');">
+        <img src="./assets/logo.png" alt="Pizzaria Modelo" class="mx-auto w-24 h-24 rounded-full">
+        <h1 class="text-3xl font-bold mt-4">Pizzaria Modelo</h1>
+        <p class="text-sm mt-2">Rua dos Alimentos, 12 - Centro Grande, MG</p>
+        <button id="toggle-hours" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 mt-4 rounded">
+            Abre às 18:00 às 23:00
+        </button>
+        <ul id="hours-list" class="text-white text-sm mt-2 rounded-lg hidden">
+            <li>Segunda: 18:00 - 23:00</li>
+            <li>Terça: 18:00 - 23:00</li>
+            <li>Quarta: 18:00 - 23:00</li>
+            <li>Quinta: 18:00 - 23:00</li>
+            <li>Sexta: 18:00 - 23:00</li>
+            <li>Sábado: 18:00 - 23:00</li>
+            <li>Domingo: fechado</li>
+        </ul>
+    
+       <!-- Ícone de Carrinho de Compras -->
+       <div class="fixed top-0 right-0 mt-4 mr-4 z-50 bg-yellow-500 p-2 rounded-full shadow-lg">
+        <button onclick="toggleCart()" class="relative">
+            <span class="material-symbols-outlined text-black text-3xl">
+                shopping_cart
+            </span>
+            <!-- Indicador de quantidade de itens no carrinho -->
+            <span id="cart-count" class="absolute top-0 right-0 bg-red-600 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center hidden">0</span>
+        </button>
+    </div>
+    
+</header>
+
+<div id="notification" class="fixed top-0 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-4 py-2 rounded-lg hidden z-50">
+    Item adicionado ao carrinho!
+</div>
+    <!-- BEbida Section -->
+    <section class="text-center my-8">
+        <h2 class="text-2xl font-semibold mb-4">Conheça nosso menu</h2>
+        <div class="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <!-- Menu Item -->
+            <div class="bg-white shadow-md rounded-lg overflow-hidden p-4 flex flex-col sm:flex-row items-center relative">
+                <img src="./assets/clabresa.png" alt="Pizza de Calabresa" class="w-30 h-20 object-cover mb-4 sm:mb-0 sm:mr-4">
+                <div class="flex-grow text-center sm:text-left">
+                    <h3 class="text-lg font-bold">Pizza de Calabresa</h3>
+                    <p class="text-gray-400 text-sm mt-1">Calabresa Fatiada, Cebola, Muçarela, Molho de Tomate, Orégano.</p>
+                    <p class="text-sm font-semibold mt-2">R$ 21,90</p>
+                </div>
+                <button class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded flex items-center mt-4 sm:mt-0 sm:absolute sm:right-4 sm:bottom-4" onclick="addToCart('Pizza de Calabresa', 21.90)">
+                    <span class="material-symbols-outlined mr-2">add_shopping_cart</span>
+                </button>
+            </div>
+            <!-- Repetir a estrutura dos itens conforme necessário -->
+            <div class="bg-white shadow-md rounded-lg overflow-hidden p-4 flex flex-col sm:flex-row items-center relative">
+                <img src="./assets/carne seca.png" alt="Pizza de Carne seca" class="w-30 h-20 object-cover mb-4 sm:mb-0 sm:mr-4">
+                <div class="flex-grow text-center sm:text-left">
+                    <h3 class="text-lg font-bold">Pizza de Carne Seca</h3>
+                    <p class="text-gray-400 text-sm mt-1">Carne Seca Desfiada, Muçarela, Cebola, Molho de Tomate, Orégano.</p>
+                    <p class="text-sm font-semibold mt-2">R$ 21,90</p>
+                </div>
+                <button class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded flex items-center mt-4 sm:mt-0 sm:absolute sm:right-4 sm:bottom-4" onclick="addToCart('Pizza de Carne seca', 21.90)">
+                    <span class="material-symbols-outlined mr-2">add_shopping_cart</span>
+                </button>
+            </div>
+            <!-- Outro item -->
+            <div class="bg-white shadow-md rounded-lg overflow-hidden p-4 flex flex-col sm:flex-row items-center relative">
+                <img src="./assets/catupiry.png" alt="Pizza de Calabresa" class="w-30 h-20 object-cover mb-4 sm:mb-0 sm:mr-4">
+                <div class="flex-grow text-center sm:text-left">
+                    <h3 class="text-lg font-bold">Pizza de Catupiry</h3>
+                    <p class="text-gray-400 text-sm mt-1">Queijo Catupiry, Muçarela, Molho de Tomate, Orégano</p>
+                    <p class="text-sm font-semibold mt-2">R$ 21,90</p>
+                </div>
+                <button class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded flex items-center mt-4 sm:mt-0 sm:absolute sm:right-4 sm:bottom-4" onclick="addToCart('Pizza de Catupiry', 21.90)">
+                    <span class="material-symbols-outlined mr-2">add_shopping_cart</span>
+                </button>
+            </div>
+              <!-- Outro item -->
+              <div class="bg-white shadow-md rounded-lg overflow-hidden p-4 flex flex-col sm:flex-row items-center relative">
+                <img src="./assets/4qyeijos (1).png" alt="Pizza de 4 queijjos" class="w-30 h-20 object-cover mb-4 sm:mb-0 sm:mr-4">
+                <div class="flex-grow text-center sm:text-left">
+                    <h3 class="text-lg font-bold">Pizza de 4 Queijos</h3>
+                    <p class="text-gray-400 text-sm mt-1">Muçarela, Parmesão, Provolone, Gorgonzola, Molho de Tomate.</p>
+                    <p class="text-sm font-semibold mt-2">R$ 21,90</p>
+                </div>
+                <button class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded flex items-center mt-4 sm:mt-0 sm:absolute sm:right-4 sm:bottom-4" onclick="addToCart('Pizza de 4 Queijos', 21.90)">
+                    <span class="material-symbols-outlined mr-2">add_shopping_cart</span>
+                </button>
+            </div>
+        </div>
+    </section>
+       <!-- Menu Section -->
+       <section class="text-center my-8">
+        <h2 class="text-2xl font-semibold mb-4">Bebidas</h2>
+        <h2 class="text-2xl font-semibold mb-4">Refrigerantes (350 ml)</h2>
+        <div class="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <!-- Menu Item -->
+            <div class="bg-white shadow-md rounded-lg overflow-hidden p-4 flex flex-col sm:flex-row items-center relative">
+                <img src="./assets/peps.png" alt="Pepsi" class="w-30 h-20 object-cover mb-4 sm:mb-0 sm:mr-4">
+                <div class="flex-grow text-center sm:text-left">
+                    <h3 class="text-lg font-bold">Pepsi</h3>
+                    <p class="text-gray-400 text-sm mt-1"></p>
+                    <p class="text-sm font-semibold mt-2">R$ 7,90</p>
+                </div>
+                <button class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded flex items-center mt-4 sm:mt-0 sm:absolute sm:right-4 sm:bottom-4" onclick="addToCart('Pepsi', 7.90)">
+                    <span class="material-symbols-outlined mr-2">add_shopping_cart</span>
+                </button>
+            </div>
+            <!-- Repetir a estrutura dos itens conforme necessário -->
+            <div class="bg-white shadow-md rounded-lg overflow-hidden p-4 flex flex-col sm:flex-row items-center relative">
+                <img src="./assets/anatartida lata.png" alt="Antartida " class="w-30 h-20 object-cover mb-4 sm:mb-0 sm:mr-4">
+                <div class="flex-grow text-center sm:text-left">
+                    <h3 class="text-lg font-bold">Guaraná Antarctica</h3>
+                    <p class="text-gray-400 text-sm mt-1"></p>
+                    <p class="text-sm font-semibold mt-2">R$ 7,90</p>
+                </div>
+                <button class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded flex items-center mt-4 sm:mt-0 sm:absolute sm:right-4 sm:bottom-4" onclick="addToCart('Guaraná Antarctica', 7.90)">
+                    <span class="material-symbols-outlined mr-2">add_shopping_cart</span>
+                </button>
+            </div>
+            <!-- Repetir a estrutura dos itens conforme necessário -->
+            <div class="bg-white shadow-md rounded-lg overflow-hidden p-4 flex flex-col sm:flex-row items-center relative">
+                <img src="./assets/coca cola.png" alt="Coca cola" class="w-30 h-20 object-cover mb-4 sm:mb-0 sm:mr-4">
+                <div class="flex-grow text-center sm:text-left">
+                    <h3 class="text-lg font-bold">Coca Cola</h3>
+                    <p class="text-gray-400 text-sm mt-1"></p>
+                    <p class="text-sm font-semibold mt-2">R$ 7,90</p>
+                </div>
+                <button class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded flex items-center mt-4 sm:mt-0 sm:absolute sm:right-4 sm:bottom-4" onclick="addToCart('Coca Cola', 7.90)">
+                    <span class="material-symbols-outlined mr-2">add_shopping_cart</span>
+                </button>
+            </div>
+            <!-- Repetir a estrutura dos itens conforme necessário -->
+            <div class="bg-white shadow-md rounded-lg overflow-hidden p-4 flex flex-col sm:flex-row items-center relative">
+                <img src="./assets/fanat laranja.png" alt="Fanta Laranaja" class="w-30 h-20 object-cover mb-4 sm:mb-0 sm:mr-4">
+                <div class="flex-grow text-center sm:text-left">
+                    <h3 class="text-lg font-bold">Fanta Laranaja</h3>
+                    <p class="text-gray-400 text-sm mt-1"></p>
+                    <p class="text-sm font-semibold mt-2">R$ 7,90</p>
+                </div>
+                <button class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded flex items-center mt-4 sm:mt-0 sm:absolute sm:right-4 sm:bottom-4" onclick="addToCart('Fanta Laranaja', 7.90)">
+                    <span class="material-symbols-outlined mr-2">add_shopping_cart</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+ <!-- Carrinho de Compras -->
+<aside id="cart" class="fixed bottom-0 right-0 w-full md:w-1/3 bg-white p-6 shadow-lg rounded-t-lg hidden">
+    <div class="flex justify-between items-center mb-4">
+        <h2 class="text-2xl font-bold">Carrinho de Compras</h2>
+        <button class="text-red-500 hover:text-red-700 font-bold text-lg" onclick="toggleCart()">X</button>
+    </div>
+    <div class="overflow-y-auto h-64 mb-4">
+        <ul id="cart-items">
+            <!-- Itens do Carrinho -->
+        </ul>
+    </div>
+    <div id="delivery-section" class="mb-4 hidden">
+        <label for="address" class="block text-lg font-semibold">Endereço de Entrega:</label>
+        <input type="text" id="address" class="w-full p-2 border rounded-lg" placeholder="Rua, número e bairro">
+    </div>
+    <div class="flex justify-between items-center">
+        <span class="text-lg font-semibold">Total:</span>
+        <span id="cart-total" class="text-red-500 text-xl font-bold">R$ 0,00</span>
+    </div>
+    <button id="show-delivery-section" class="w-full bg-green-500 text-white py-2 px-4 mt-4 rounded-lg hover:bg-green-600">
+        Adicionar Endereço de Entrega
+    </button>
+    <a id="finalize-order" class="w-full bg-green-500 text-white py-2 px-4 mt-4 rounded-lg hover:bg-green-600 text-center block" href="#" target="_blank">
+        Finalizar Pedido
+    </a>
+</aside>
+
+
+    <script src="./main.js"></script>
+</body>
+</html>
