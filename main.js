@@ -114,6 +114,11 @@ function updateCart() {
         orderText += `- ${item.name}: R$ ${item.price.toFixed(2)}%0A`; // Adiciona cada item ao texto do pedido
     });
 
+    // Sempre pega o valor atualizado das observações
+    if (orderNotes) {
+        orderText += `%0AObservações: ${orderNotes}%0A`; // Adiciona as observações ao texto do pedido
+    }
+
     // Se houver endereço, adicionar taxa de entrega
     if (address) {
         total += 4; // Adiciona taxa de entrega de R$ 4,00
@@ -121,10 +126,7 @@ function updateCart() {
         orderText += `%0AEndereço de Entrega: ${address}%0A`; // Adiciona o endereço ao texto do pedido
     }
 
-    // Sempre pega o valor atualizado das observações
-    if (orderNotes) {
-        orderText += `%0AObservações: ${orderNotes}%0A`; // Adiciona as observações ao texto do pedido
-    }
+    
 
     cartTotalElement.innerText = `R$ ${total.toFixed(2)}`;
     orderText += `%0ATotal: R$ ${total.toFixed(2)}%0A`; // Adiciona o total ao texto do pedido
