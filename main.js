@@ -87,12 +87,15 @@ function removeFromCart(index) {
         document.getElementById('cart-count').textContent = cart.length;
     }
 }
+// Adiciona um event listener para detectar mudanças no campo de observações
+document.getElementById('order-notes').addEventListener('input', updateCart);
 
 function updateCart() {
     const cartItems = document.getElementById('cart-items');
     const cartTotalElement = document.getElementById('cart-total');
     const finalizeOrder = document.getElementById('finalize-order');
     const address = document.getElementById('address').value;
+    const orderNotes = document.getElementById('order-notes').value; // Pega o valor atualizado das observações sempre que a função é chamada
 
     cartItems.innerHTML = '';
     let total = 0;
@@ -118,6 +121,11 @@ function updateCart() {
         orderText += `%0AEndereço de Entrega: ${address}%0A`; // Adiciona o endereço ao texto do pedido
     }
 
+    // Sempre pega o valor atualizado das observações
+    if (orderNotes) {
+        orderText += `%0AObservações: ${orderNotes}%0A`; // Adiciona as observações ao texto do pedido
+    }
+
     cartTotalElement.innerText = `R$ ${total.toFixed(2)}`;
     orderText += `%0ATotal: R$ ${total.toFixed(2)}%0A`; // Adiciona o total ao texto do pedido
 
@@ -125,11 +133,19 @@ function updateCart() {
     finalizeOrder.href = `https://wa.me/558698553437?text=${orderText}`;
 }
 
-// Função para mostrar ou ocultar o carrinho
+
+
 function toggleCart() {
     const cart = document.getElementById('cart');
-    cart.classList.toggle('hidden');
+    cart.classList.toggle('hidden'); // Mostra ou esconde o carrinho
+
+    if (!cart.classList.contains('hidden')) {
+        document.body.classList.add('no-scroll'); // Desabilita o scroll no fundo
+    } else {
+        document.body.classList.remove('no-scroll'); // Habilita o scroll no fundo
+    }
 }
+
 
 // Atualiza o link do pedido quando o endereço é alterado
 document.getElementById('address').addEventListener('input', updateCart);

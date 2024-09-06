@@ -9,6 +9,12 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="bg-gray-100">
+    <style>
+        /* Classe que desabilita o scroll do fundo */
+        .no-scroll {
+            overflow: hidden;
+        }
+    </style>
     <!-- Header -->
     <header class="bg-gray-800 text-white text-center py-8 relative bg-cover bg-center" style="background-image: url('./assets/banner-01.jpg');">
         <img src="./assets/logo.png" alt="Pizzaria Modelo" class="mx-auto w-24 h-24 rounded-full">
@@ -44,7 +50,7 @@
     Item adicionado ao carrinho!
 </div>
     <!-- BEbida Section -->
-    <section class="text-center my-8">
+    <section class="text-center my-8 px-4">
         <h2 class="text-2xl font-semibold mb-4">Conheça nosso menu</h2>
         <div class="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-6">
             <!-- Menu Item -->
@@ -55,7 +61,7 @@
                     <p class="text-gray-400 text-sm mt-1">Calabresa Fatiada, Cebola, Muçarela, Molho de Tomate, Orégano.</p>
                     <p class="text-sm font-semibold mt-2">R$ 21,90</p>
                 </div>
-                <button class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded flex items-center mt-4 sm:mt-0 sm:absolute sm:right-4 sm:bottom-4" onclick="addToCart('Pizza de Calabresa', 21.90)">
+                <button class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded flex items-center   justify-center mt-4 sm:mt-0 sm:absolute sm:right-4 sm:bottom-4" onclick="addToCart('Pizza de Calabresa', 21.90)">
                     <span class="material-symbols-outlined mr-2">add_shopping_cart</span>
                 </button>
             </div>
@@ -67,7 +73,7 @@
                     <p class="text-gray-400 text-sm mt-1">Carne Seca Desfiada, Muçarela, Cebola, Molho de Tomate, Orégano.</p>
                     <p class="text-sm font-semibold mt-2">R$ 21,90</p>
                 </div>
-                <button class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded flex items-center mt-4 sm:mt-0 sm:absolute sm:right-4 sm:bottom-4" onclick="addToCart('Pizza de Carne seca', 21.90)">
+                <button class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded flex items-center  justify-center mt-4 sm:mt-0 sm:absolute sm:right-4 sm:bottom-4" onclick="addToCart('Pizza de Carne seca', 21.90)">
                     <span class="material-symbols-outlined mr-2">add_shopping_cart</span>
                 </button>
             </div>
@@ -79,7 +85,7 @@
                     <p class="text-gray-400 text-sm mt-1">Queijo Catupiry, Muçarela, Molho de Tomate, Orégano</p>
                     <p class="text-sm font-semibold mt-2">R$ 21,90</p>
                 </div>
-                <button class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded flex items-center mt-4 sm:mt-0 sm:absolute sm:right-4 sm:bottom-4" onclick="addToCart('Pizza de Catupiry', 21.90)">
+                <button class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded flex items-center  justify-center mt-4 sm:mt-0 sm:absolute sm:right-4 sm:bottom-4" onclick="addToCart('Pizza de Catupiry', 21.90)">
                     <span class="material-symbols-outlined mr-2">add_shopping_cart</span>
                 </button>
             </div>
@@ -98,7 +104,7 @@
         </div>
     </section>
        <!-- Menu Section -->
-       <section class="text-center my-8">
+       <section class="text-center my-8 px-4">
         <h2 class="text-2xl font-semibold mb-4">Bebidas</h2>
         <h2 class="text-2xl font-semibold mb-4">Refrigerantes (350 ml)</h2>
         <div class="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -110,7 +116,7 @@
                     <p class="text-gray-400 text-sm mt-1"></p>
                     <p class="text-sm font-semibold mt-2">R$ 7,90</p>
                 </div>
-                <button class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded flex items-center mt-4 sm:mt-0 sm:absolute sm:right-4 sm:bottom-4" onclick="addToCart('Pepsi', 7.90)">
+                <button class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded flex items-center  justify-center mt-4 sm:mt-0 sm:absolute sm:right-4 sm:bottom-4" onclick="addToCart('Pepsi', 7.90)">
                     <span class="material-symbols-outlined mr-2">add_shopping_cart</span>
                 </button>
             </div>
@@ -122,7 +128,7 @@
                     <p class="text-gray-400 text-sm mt-1"></p>
                     <p class="text-sm font-semibold mt-2">R$ 7,90</p>
                 </div>
-                <button class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded flex items-center mt-4 sm:mt-0 sm:absolute sm:right-4 sm:bottom-4" onclick="addToCart('Guaraná Antarctica', 7.90)">
+                <button class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded flex items-center  justify-center mt-4 sm:mt-0 sm:absolute sm:right-4 sm:bottom-4" onclick="addToCart('Guaraná Antarctica', 7.90)">
                     <span class="material-symbols-outlined mr-2">add_shopping_cart</span>
                 </button>
             </div>
@@ -134,7 +140,7 @@
                     <p class="text-gray-400 text-sm mt-1"></p>
                     <p class="text-sm font-semibold mt-2">R$ 7,90</p>
                 </div>
-                <button class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded flex items-center mt-4 sm:mt-0 sm:absolute sm:right-4 sm:bottom-4" onclick="addToCart('Coca Cola', 7.90)">
+                <button class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded flex items-center  justify-center mt-4 sm:mt-0 sm:absolute sm:right-4 sm:bottom-4" onclick="addToCart('Coca Cola', 7.90)">
                     <span class="material-symbols-outlined mr-2">add_shopping_cart</span>
                 </button>
             </div>
@@ -146,14 +152,14 @@
                     <p class="text-gray-400 text-sm mt-1"></p>
                     <p class="text-sm font-semibold mt-2">R$ 7,90</p>
                 </div>
-                <button class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded flex items-center mt-4 sm:mt-0 sm:absolute sm:right-4 sm:bottom-4" onclick="addToCart('Fanta Laranaja', 7.90)">
+                <button class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded flex items-center  justify-center mt-4 sm:mt-0 sm:absolute sm:right-4 sm:bottom-4" onclick="addToCart('Fanta Laranaja', 7.90)">
                     <span class="material-symbols-outlined mr-2">add_shopping_cart</span>
                 </button>
             </div>
         </div>
     </section>
 
- <!-- Carrinho de Compras -->
+<!-- Carrinho de Compras -->
 <aside id="cart" class="fixed bottom-0 right-0 w-full md:w-1/3 bg-white p-6 shadow-lg rounded-t-lg hidden">
     <div class="flex justify-between items-center mb-4">
         <h2 class="text-2xl font-bold">Carrinho de Compras</h2>
@@ -163,6 +169,8 @@
         <ul id="cart-items">
             <!-- Itens do Carrinho -->
         </ul>
+        <label for="order-notes" class="block text-lg font-semibold mt-4">Observações:</label>
+        <textarea id="order-notes" class="w-full p-2 border rounded-lg" placeholder="Ex: Retirar azeitonas, molho extra, etc." rows="3"></textarea>
     </div>
     <div id="delivery-section" class="mb-4 hidden">
         <label for="address" class="block text-lg font-semibold">Endereço de Entrega:</label>
@@ -179,6 +187,8 @@
         Finalizar Pedido
     </a>
 </aside>
+
+
 
 
     <script src="./main.js"></script>
