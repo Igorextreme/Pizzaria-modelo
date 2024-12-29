@@ -135,6 +135,30 @@ function updateCart() {
     finalizeOrder.href = `https://wa.me/558698553437?text=${orderText}`;
 }
 
+function openHalfPizzaModal() {
+    document.getElementById("halfPizzaModal").classList.remove("hidden");
+    document.body.classList.add("no-scroll");
+}
+
+function closeHalfPizzaModal() {
+    document.getElementById("halfPizzaModal").classList.add("hidden");
+    document.body.classList.remove("no-scroll");
+}
+
+function addHalfPizzaToCart() {
+    const flavor1 = document.getElementById("flavor1").value;
+    const flavor2 = document.getElementById("flavor2").value;
+
+    const halfPizzaName = `Meia ${flavor1} e Meia ${flavor2}`;
+    const halfPizzaPrice = 21.90; // Ajuste o preço se necessário
+
+    // Adicione a meia pizza ao carrinho (exemplo fictício de função)
+    addToCart(halfPizzaName, halfPizzaPrice);
+
+    // Notificação e fechamento do modal
+    alert(`${halfPizzaName} adicionada ao carrinho!`);
+    closeHalfPizzaModal();
+}
 
 
 function toggleCart() {
@@ -147,6 +171,23 @@ function toggleCart() {
         document.body.classList.remove('no-scroll'); // Habilita o scroll no fundo
     }
 }
+ // Função para filtrar os itens do menu com base na entrada do usuário
+ function filterMenu() {
+    const searchInput = document.getElementById("searchInput").value.toLowerCase();
+    const menuItems = document.querySelectorAll(".bg-white.shadow-md");
+
+    menuItems.forEach(item => {
+        const itemName = item.querySelector("h3").textContent.toLowerCase();
+        const itemDescription = item.querySelector("p").textContent.toLowerCase();
+
+        if (itemName.includes(searchInput) || itemDescription.includes(searchInput)) {
+            item.style.display = "block"; // Exibe o item que corresponde à busca
+        } else {
+            item.style.display = "none"; // Oculta o item que não corresponde à busca
+        }
+    });
+}
+
 
 
 // Atualiza o link do pedido quando o endereço é alterado

@@ -45,6 +45,28 @@
     </div>
     
 </header>
+<!-- Campo de Busca -->
+<section class="text-center my-8 px-4 relative">
+    <h2 class="text-2xl font-semibold mb-4">Pesquise no Cardápio</h2>
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <input
+            type="text"
+            id="searchInput"
+            class="border border-gray-300 rounded-lg px-4 py-2 w-full max-w-md"
+            placeholder="Digite para buscar: ex. pizza, bebida, etc."
+            oninput="filterMenu()"
+        />
+        <!-- Botão para Meia Pizza -->
+        <button
+            class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded flex items-center"
+            onclick="openHalfPizzaModal()"
+        >
+            <span class="material-symbols-outlined mr-2">pie_chart</span>
+            Metade/Metade
+        </button>
+    </div>
+</section>
+
 
 <div id="notification" class="fixed top-0 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-4 py-2 rounded-lg hidden z-50">
     Item adicionado ao carrinho!
@@ -158,6 +180,44 @@
             </div>
         </div>
     </section>
+
+
+<!-- Modal de Seleção -->
+<div id="halfPizzaModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+    <div class="bg-white w-full max-w-md p-6 rounded-lg shadow-lg relative">
+        <h2 class="text-xl font-semibold mb-4">Escolha os sabores para Meia Pizza</h2>
+        
+        <div class="flex flex-col space-y-4">
+            <!-- Primeiro sabor -->
+            <div>
+                <label for="flavor1" class="block text-sm font-medium text-gray-700">Primeiro sabor:</label>
+                <select id="flavor1" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                    <option value="calabresa">Calabresa</option>
+                    <option value="carne seca">Carne Seca</option>
+                    <option value="catupiry">Catupiry</option>
+                    <option value="4 queijos">4 Queijos</option>
+                </select>
+            </div>
+
+            <!-- Segundo sabor -->
+            <div>
+                <label for="flavor2" class="block text-sm font-medium text-gray-700">Segundo sabor:</label>
+                <select id="flavor2" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                    <option value="calabresa">Calabresa</option>
+                    <option value="carne seca">Carne Seca</option>
+                    <option value="catupiry">Catupiry</option>
+                    <option value="4 queijos">4 Queijos</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="mt-6 flex justify-end space-x-4">
+            <button class="bg-gray-400 hover:bg-gray-500 text-white py-2 px-4 rounded" onclick="closeHalfPizzaModal()">Cancelar</button>
+            <button class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded" onclick="addHalfPizzaToCart()">Adicionar</button>
+        </div>
+    </div>
+</div>
+
 
 <!-- Carrinho de Compras -->
 <aside id="cart" class="fixed bottom-0 right-0 w-full md:w-1/3 bg-white p-6 shadow-lg rounded-t-lg hidden">
